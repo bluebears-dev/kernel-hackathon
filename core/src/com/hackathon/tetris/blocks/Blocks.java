@@ -110,4 +110,8 @@ public class Blocks extends Polygon {
     public void dispose() {
         blockImage.dispose();
     }
+    public Vector2 getVelocity() {
+        return velocity;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.hackathon.tetris.board;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.hackathon.tetris.blocks.Blocks;
@@ -30,7 +31,7 @@ public class GameBoard {
     public void removeRow(int number) {
 
     }
-    public boolean checkCollision() {
+    public boolean checkBorderCollision() {
         for(int i=0; i<activeBlock.getVertices().length;i++) {
             //left or right
             if (i%2==0) {
@@ -90,7 +91,29 @@ public class GameBoard {
             activeBlock.reposition(new Vector2(40,0));
         }
         else if(Gdx.input.isKeyJustPressed(21))
-            activeBlock.reposition(new Vector2(-40,0));
-
+            activeBlock.translate(-40,0);
+        else if(Gdx.input.isKeyJustPressed(19))
+            activeBlock.handleRotation();
+    }
+    public void updatePosition(float dt) {
+        handleInput();
+        Vector2 newPosition=activeBlock.getPosition().add(activeBlock.getVelocity().scl(dt));
+        activeBlock.setPosition(newPosition.x,newPosition.y);
+    }
+    public void handleRotation() {
+        activeBlock.rotate(90);
+        if(checkCollisionsAfterRotation()) {
+            activeBlock.rotate(-90);
+        }
+    }
+    public boolean checkCollisionsAfterRotation() {
+        float[] transformedVertices=activeBlock.getTransformedVertices();
+        if (checkBorderCollision())
+            return true;
+        for (int i=0;i<transformedVertices.length-1;i++) {
+            if (activeBlock.contains(i, i + 1))
+                return true;
+        }
+        return false;
     }
 }
