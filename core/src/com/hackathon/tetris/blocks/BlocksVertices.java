@@ -52,6 +52,13 @@ public class BlocksVertices {
                                         4,1,
                                         0,4,
                                         0,0};
+    public static float[] zSmallBlocksVertices={1,0,2,0,0,1,1,1};
+    public static float[] nailSmallBlocksVertices={1,0,0,1,1,1,2,1};
+    public static float[] lSmallBlocksVertices={0,0,1,0,2,0,1,1};
+    public static float[] zSmallBlocksInverseVertices={0,0,1,0,1,1,2,1};
+    public static float[] squareSmallBlocksVertices={0,0,1,0,1,1,0,1};
+    public static float[] lSmallBlocksInverseVertices={2,0,0,1,1,2,1,3};
+    public static float[] lineSmallBlocksVertices={0,0,1,0,2,0,3,0};
     public static float[] getTypeVertices(BlocksTypesEnum type) {
         switch (type) {
             case Z: return zVertices;
