@@ -44,7 +44,7 @@ public class PlayState extends State {
     public void render() {
         sb.begin();
         sb.draw(bg, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y,100,150);
+        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y,100,50);
         sb.end();
 
     }
