@@ -22,7 +22,7 @@ public class TetrisServer {
 
     TetrisServer() {
         server = new Server();
-        games = new LinkedList<>();
+        games = new LinkedList<GameInstance>();
 
         Kryo kryo = server.getKryo();
         kryo.register(RegisterPlayerResponse.class);
