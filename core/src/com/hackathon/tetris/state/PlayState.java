@@ -44,7 +44,7 @@ public class PlayState extends State {
     public void render() {
         sb.begin();
         sb.draw(bg,0, 0);
-        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y);
+        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y,100,150);
         sb.end();
 
     }
@@ -61,5 +61,10 @@ public class PlayState extends State {
     public void dispose() {
         bg.dispose();
         block.dispose();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
     }
 }

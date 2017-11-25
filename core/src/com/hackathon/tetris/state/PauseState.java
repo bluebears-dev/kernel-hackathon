@@ -44,4 +44,9 @@ public class PauseState extends State {
     public void dispose() {
 
     }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
 }
