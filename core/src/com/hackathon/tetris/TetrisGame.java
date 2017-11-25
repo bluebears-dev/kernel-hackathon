@@ -36,4 +36,11 @@ public class TetrisGame extends ApplicationAdapter {
 	public void dispose () {
 
 	}
+
+	@Override
+	public void resize (int width, int height) {
+		gsm.resize(width, height);
+	}
+
+
 }

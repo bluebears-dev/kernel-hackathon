@@ -22,5 +22,6 @@ public abstract class State {
     public abstract void upadte (float dt); // update scene
     public abstract void render(); // render scene
     public abstract void dispose(); // dispose resource
+    public abstract void resize(int width, int height);
 
 }

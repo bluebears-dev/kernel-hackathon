@@ -62,4 +62,9 @@ public class PlayState extends State {
         bg.dispose();
 
     }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
 }

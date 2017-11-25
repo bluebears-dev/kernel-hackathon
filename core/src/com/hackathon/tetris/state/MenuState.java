@@ -27,11 +27,11 @@ public class MenuState extends State {
 
         //playButton
         playBtn = new Texture("PlayButton1.png");
-        recPlay = new Rectangle(350, 110, playBtn.getWidth(), playBtn.getHeight());
+        recPlay = new Rectangle(600, 110, playBtn.getWidth(), playBtn.getHeight());
 
         //exitButton
         exitBtn = new Texture("ExitButton1.png");
-        recExit = new Rectangle(350 ,40 , exitBtn.getWidth(), exitBtn.getHeight());
+        recExit = new Rectangle(600 ,40 , exitBtn.getWidth(), exitBtn.getHeight());
 
         //bg
         bg = new Texture("MainMenuBackground.png");
@@ -75,9 +75,9 @@ public class MenuState extends State {
     @Override
     public void render() {
         sb.begin();
-        sb.draw(bg, 0, 0);
-        sb.draw(playBtn, 350, 110);
-        sb.draw(exitBtn, 350 ,40);
+        sb.draw(bg, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        sb.draw(playBtn, 600, 110);
+        sb.draw(exitBtn, 600 ,40);
         sb.end();
 
     }
@@ -88,4 +88,10 @@ public class MenuState extends State {
         exitBtn.dispose();
 
     }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
 }
