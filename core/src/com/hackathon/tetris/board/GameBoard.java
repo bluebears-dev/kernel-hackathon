@@ -31,7 +31,7 @@ public class GameBoard {
                 if (activeBlock.getVertices()[i]>board.getX()+board.getWidth())
                     return true;
             }
-            //downa
+            //down
             else {
                 if (activeBlock.getVertices()[i]>board.getY())
                     return true;

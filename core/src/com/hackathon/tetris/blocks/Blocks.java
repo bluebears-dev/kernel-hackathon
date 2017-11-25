@@ -14,22 +14,32 @@ public class Blocks extends Polygon{
     private byte numberOfBlocks=4;
     private Texture blockImage;
     private BlocksTypesEnum type;
+    private float scale=1;
 
     public Blocks (BlocksTypesEnum blockType, float scale) {
         position = new Vector2(300, 300);
         velocity = new Vector2(0,GRAVITY);
         type=blockType;
         setTexture();
+        this.scale=scale;
         float[] vertices=BlocksVertices.getTypeVertices(blockType);
         for (int i=0;i<vertices.length;i++){
             vertices[i]=scale*vertices[i];
         }
         this.setVertices(vertices);
     }
+    public Blocks (Blocks block) {
+        this.type=block.type;
+        this.scale=block.scale;
+        this.position=block.position;
+        this.rotation=block.rotation;
+        this.blockImage=block.blockImage;
+        this.velocity=block.velocity;
+    }
     public void setTexture() {
         switch (type) {
             case Z:
-                blockImage = new Texture("bird.png");
+                blockImage = new Texture("OKButton1.png");
                 break;
             case NAIL:
                 blockImage = new Texture("22.png");
@@ -56,11 +66,17 @@ public class Blocks extends Polygon{
         handleInput();
         velocity.scl(dt);
         position.add(velocity);
-
         velocity.scl(1/dt);
-
-
-
+    }
+    public void handleRotation() {
+        if(!checkCollisionsAfterRotation()) {
+            this.rotate(90);
+        }
+    }
+    public boolean checkCollisionsAfterRotation() {
+        int tmpRotation=(rotation+1)%4;
+        Blocks tmpBlock=new Blocks(this);
+        return false;
     }
     public void handleInput() {
         if (Gdx.input.isKeyJustPressed(22)){ //RIGHT - 22
