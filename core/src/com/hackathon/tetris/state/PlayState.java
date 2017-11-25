@@ -13,9 +13,9 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm, SpriteBatch sb) {
         super(gsm);
-        bg = new Texture("badlogic.jpg"); // core/assets
+        bg = new Texture("11.png"); // core/assets
         this.sb = sb;
-        Codes = new int[0];
+        Codes = new int[4];
     }
 
     @Override
