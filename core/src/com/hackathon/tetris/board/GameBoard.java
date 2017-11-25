@@ -6,11 +6,12 @@ import com.hackathon.tetris.blocks.Blocks;
 import com.hackathon.tetris.blocks.SmallBlocks;
 
 import java.util.List;
+import java.util.Random;
 
 public class GameBoard {
     Rectangle board;
     List<Blocks> currentBlocks;
-    Blocks activeBlock;
+    Blocks activeBlock=null;
     SmallBlocks[][] gameBoard=new SmallBlocks[10][10];
     public void removeRow(int number) {
 
@@ -24,12 +25,18 @@ public class GameBoard {
                 if (activeBlock.getVertices()[i]>board.getX()+board.getWidth())
                     return true;
             }
-            //down
+            //downa
             else {
                 if (activeBlock.getVertices()[i]>board.getY())
                     return true;
             }
         }
         return false;
+    }
+    public void generateNewBlock() {
+        if (activeBlock!=null)
+            currentBlocks.add(activeBlock);
+        Random random=new Random();
+        int numberOf=random.nextInt(6)+1;
     }
 }
