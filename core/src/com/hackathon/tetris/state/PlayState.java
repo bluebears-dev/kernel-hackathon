@@ -20,7 +20,7 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm, SpriteBatch sb) {
         super(gsm);
-        bg = new Texture("MainMenuBackground.png"); // core/assets
+        bg = new Texture("GameBackground.png"); // core/assets
         this.sb = sb;
         Codes = new int[4];
         gameBoard = new GameBoard();
@@ -46,8 +46,8 @@ public class PlayState extends State {
     @Override
     public void render() {
         sb.begin();
-        sb.draw(bg,0, 0);
-        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y,100,150);
+        sb.draw(bg, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y,100,50);
         sb.end();
 
     }
