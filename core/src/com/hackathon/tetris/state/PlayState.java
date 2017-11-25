@@ -5,12 +5,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PlayState extends State {
+    private int Codes[];
 
     private Texture bg;
+    private SpriteBatch sb;
 
-    public PlayState(GameStateManager gsm) {
+
+    public PlayState(GameStateManager gsm, SpriteBatch sb) {
         super(gsm);
         bg = new Texture("badlogic.jpg"); // core/assets
+        this.sb = sb;
+        Codes = new int[0];
     }
 
     @Override
@@ -25,7 +30,7 @@ public class PlayState extends State {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    public void render() {
         sb.begin();
         sb.draw(bg,0, 0);
         sb.end();
@@ -34,6 +39,10 @@ public class PlayState extends State {
 
     public Texture getBg() {
         return bg;
+    }
+
+    public void setBg(Texture texture){
+        this.bg = texture;
     }
 
     @Override

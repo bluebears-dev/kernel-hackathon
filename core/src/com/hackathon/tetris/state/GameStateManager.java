@@ -21,11 +21,12 @@ public class GameStateManager {
     public void set(State state){
         states.pop().dispose();     // set new state
         states.push(state);
+        states.peek().render();
     }
     public void upadate(float dt){   //update state
         states.peek().upadte(dt);
     }
-    public void render(SpriteBatch sb){  //render state
-        states.peek().render(sb);
+    public void render(){  //render state
+        states.peek().render();
     }
 }

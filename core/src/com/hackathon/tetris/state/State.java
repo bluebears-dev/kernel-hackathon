@@ -20,7 +20,7 @@ public abstract class State {
     protected abstract void handleInput();
 
     public abstract void upadte (float dt); // update scene
-    public abstract void render(SpriteBatch sb); // render scene
+    public abstract void render(); // render scene
     public abstract void dispose(); // dispose resource
 
 }

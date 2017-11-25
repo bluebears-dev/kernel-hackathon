@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.hackathon.tetris.state.GameStateManager;
+import com.hackathon.tetris.state.MenuState;
 import com.hackathon.tetris.state.PlayState;
 
 public class TetrisGame extends ApplicationAdapter {
@@ -20,7 +21,7 @@ public class TetrisGame extends ApplicationAdapter {
         Gdx.gl.glClearColor(1, 0, 0, 1);
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
-		gsm.push(new PlayState(gsm));
+		gsm.push(new MenuState(gsm, batch));
 
 	}
 
@@ -28,13 +29,11 @@ public class TetrisGame extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.upadate(Gdx.graphics.getDeltaTime());
-		batch.begin();
-		batch.end();
+		gsm.render();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
 
 	}
 }
