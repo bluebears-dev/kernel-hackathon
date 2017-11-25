@@ -12,9 +12,9 @@ public class GameInstance {
     private List<String> availableRoles;
 
     GameInstance(int id) {
-        connections = new HashMap<>();
-        roles = new HashMap<>();
-        availableRoles = new ArrayList<>(
+        connections = new HashMap<Connection, String>();
+        roles = new HashMap<String, String>();
+        availableRoles = new ArrayList<String>(
                 Arrays.asList(
                         "BUTTON_LEFT",
                         "BUTTON_RIGHT",
