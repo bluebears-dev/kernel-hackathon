@@ -19,7 +19,7 @@ public class MenuState extends State {
         super(gsm);
         this.sb = sb;
         posMouse = new Vector2(Gdx.input.getX(),-(Gdx.input.getY() - Gdx.graphics.getHeight()));
-        bg = new Texture("badlogic.jpg");
+        bg = new Texture("ExitButton1.png");
         rec = new Rectangle(200, 200, bg.getWidth(), bg.getHeight());
         mouse = new Rectangle(posMouse.x, posMouse.y,1,1);
     }
@@ -27,13 +27,13 @@ public class MenuState extends State {
     @Override
     protected void handleInput() {
         if(mouse.overlaps(rec)){ //if mouse overlaps button
-            bg = new Texture("bird.png");
+            bg = new Texture("ExitButton2.png");
             render();
             if (Gdx.input.isTouched())
                 gsm.set(new PlayState(gsm, sb));
         }
         else{
-            bg = new Texture("badlogic.jpg");
+            bg = new Texture("ExitButton1.png");
             render();
         }
 

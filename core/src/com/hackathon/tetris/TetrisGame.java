@@ -27,7 +27,7 @@ public class TetrisGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.upadate(Gdx.graphics.getDeltaTime());
 		gsm.render();
 	}
