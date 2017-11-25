@@ -20,7 +20,7 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm, SpriteBatch sb) {
         super(gsm);
-        bg = new Texture("MainMenuBackground.png"); // core/assets
+        bg = new Texture("GameBackground.png"); // core/assets
         this.sb = sb;
         Codes = new int[4];
         gameBoard = new GameBoard();
