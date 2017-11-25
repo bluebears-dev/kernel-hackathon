@@ -37,7 +37,10 @@ public class PlayState extends State {
     public void upadte(float dt) {
         handleInput();
         gameBoard.handleInput();
-        block.updatePosition(dt);
+        //sprawdzenie kolizji
+        boolean collision= block.checkCollisions(gameBoard.getCurrentBlocks());
+        if (!collision)
+            block.updatePosition(dt);
     }
 
     @Override
@@ -67,4 +70,7 @@ public class PlayState extends State {
     public void resize(int width, int height) {
 
     }
+//    public boolean checkCollisions(Blocks block) {
+//        return false;
+//    }
 }

@@ -3,6 +3,7 @@ package com.hackathon.tetris.board;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.hackathon.tetris.blocks.Blocks;
@@ -19,14 +20,15 @@ public class GameBoard {
     int xCorner=0;
     int yCorner=0;
     Rectangle board=new Rectangle(xCorner,yCorner,200,200);
+
     List<Blocks> currentBlocks;
     Blocks activeBlock =null;
-    SmallBlocks[][] gameBoard=new SmallBlocks[10][10];
 
     public GameBoard(){
+        ShapeRenderer shapeRenderer=new ShapeRenderer();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         currentBlocks = new ArrayList<Blocks>();
         activeBlock = generateNewBlock();
-
     }
     public void removeRow(int number) {
 
@@ -116,4 +118,9 @@ public class GameBoard {
         }
         return false;
     }
+
+    public List<Blocks> getCurrentBlocks() {
+        return currentBlocks;
+    }
+
 }

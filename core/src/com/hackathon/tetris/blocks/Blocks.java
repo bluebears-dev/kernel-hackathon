@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.List;
+
 public class Blocks extends Polygon {
     private static final int GRAVITY = -15;
     private Vector2 velocity;
@@ -78,6 +80,18 @@ public class Blocks extends Polygon {
         Blocks tmpBlock=new Blocks(this);
         return false;
     }
+    public boolean checkCollisions(List<Blocks> currentBlocks) {
+        System.out.println(this.getPosition().y);
+        if (this.getPosition().y<=0) {
+            System.out.println("test");
+            return true;
+        }
+        for(int i=0;i<currentBlocks.size();i++) {
+            if (this.contains(currentBlocks.get(i).getPosition()))
+                return true;
+        }
+        return false;
+    }
     public void handleInput() {
         if (Gdx.input.isKeyJustPressed(22)){ //RIGHT - 22
             position.add(40,0);
@@ -90,11 +104,9 @@ public class Blocks extends Polygon {
         position.add(shuffle);
 
     }
-
     public Texture getBlockImage() {
         return blockImage;
     }
-
     public Vector2 getPosition() {
         return position;
     }
