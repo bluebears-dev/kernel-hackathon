@@ -48,6 +48,10 @@ public class TetrisClient {
         client.connect(timeout, host, port);
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public static void main(String[] argv) throws IOException {
         TetrisClient client = new TetrisClient();
         client.connect("localhost", 3333);
