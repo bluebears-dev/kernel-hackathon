@@ -39,7 +39,7 @@ public class Blocks extends Polygon{
     public void setTexture() {
         switch (type) {
             case Z:
-                blockImage = new Texture("OKButton1.png");
+                blockImage = new Texture("bird.png");
                 break;
             case NAIL:
                 blockImage = new Texture("22.png");
@@ -85,9 +85,9 @@ public class Blocks extends Polygon{
         else if(Gdx.input.isKeyJustPressed(21))
             position.add(-40,0);
 
-
     }
-    public void reposition() {
+    public void reposition(Vector2 shuffle) {
+        position.add(shuffle);
 
     }
 
