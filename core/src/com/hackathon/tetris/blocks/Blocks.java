@@ -39,7 +39,7 @@ public class Blocks extends Polygon{
     public void setTexture() {
         switch (type) {
             case Z:
-                blockImage = new Texture("bird.png");
+                blockImage = new Texture("44.png");
                 break;
             case NAIL:
                 blockImage = new Texture("22.png");
@@ -106,4 +106,8 @@ public class Blocks extends Polygon{
     public void setRotation(int rotation) {
         this.rotation = rotation;
     }
+    public Vector2 getVelocity() {
+        return velocity;
+    }
+
 }
