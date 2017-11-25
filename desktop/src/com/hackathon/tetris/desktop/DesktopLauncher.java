@@ -7,6 +7,9 @@ import com.hackathon.tetris.TetrisGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+//		config.fullscreen = TetrisGame.FULLSCREEN;
+		config.title = TetrisGame.TITLE;
+		config.width = TetrisGame.WIDTH;
 		new LwjglApplication(new TetrisGame(), config);
 	}
 }
