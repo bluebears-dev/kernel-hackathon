@@ -20,11 +20,11 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm, SpriteBatch sb) {
         super(gsm);
-//        bg = new Texture("badlogic.jpg"); // core/assets
+        bg = new Texture("MainMenuBackground.png"); // core/assets
         this.sb = sb;
         Codes = new int[4];
         gameBoard = new GameBoard();
-        block = new Blocks(Z, 10);
+        block = gameBoard.generateNewBlock();
     }
 
     @Override
@@ -36,13 +36,14 @@ public class PlayState extends State {
     @Override
     public void upadte(float dt) {
         handleInput();
+        gameBoard.handleInput();
         block.updatePosition(dt);
     }
 
     @Override
     public void render() {
         sb.begin();
-//        sb.draw(bg,0, 0);
+        sb.draw(bg,0, 0);
         sb.draw(block.getBlockImage(), block.getPosition().x,block.getPosition().y);
         sb.end();
 

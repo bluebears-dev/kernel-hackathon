@@ -1,12 +1,14 @@
 package com.hackathon.tetris.board;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.hackathon.tetris.blocks.Blocks;
 import com.hackathon.tetris.blocks.BlocksTypesEnum;
 import com.hackathon.tetris.blocks.SmallBlocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,8 +19,14 @@ public class GameBoard {
     int yCorner=0;
     Rectangle board=new Rectangle(xCorner,yCorner,200,200);
     List<Blocks> currentBlocks;
-    Blocks activeBlock=null;
+    Blocks activeBlock =null;
     SmallBlocks[][] gameBoard=new SmallBlocks[10][10];
+
+    public GameBoard(){
+        currentBlocks = new ArrayList<Blocks>();
+        activeBlock = generateNewBlock();
+
+    }
     public void removeRow(int number) {
 
     }
@@ -74,5 +82,15 @@ public class GameBoard {
         block.setRotation(rotation);
         block.setPosition(position);
         return block;
+
+
+    }
+    public void handleInput(){
+        if (Gdx.input.isKeyJustPressed(22)){ //RIGHT - 22
+            activeBlock.reposition(new Vector2(40,0));
+        }
+        else if(Gdx.input.isKeyJustPressed(21))
+            activeBlock.reposition(new Vector2(-40,0));
+
     }
 }
