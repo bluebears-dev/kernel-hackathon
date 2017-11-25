@@ -70,7 +70,7 @@ public class GameBoard {
         float scale=board.getWidth()/10;
         Blocks block = new Blocks(newBlockType,scale);
         int rotation = random.nextInt(4);
-        Vector2 position=new Vector2(xCorner+board.getWidth()/2,yCorner+board.getHeight());
+        Vector2 position=new Vector2(xCorner+board.getWidth()/2-scale,yCorner+board.getHeight());
         block.setRotation(rotation);
         block.setPosition(position);
         return block;
