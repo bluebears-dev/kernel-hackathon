@@ -35,11 +35,23 @@ public class GameInstance {
         connections.put(connection, token);
     }
 
+    public void removePlayer(Connection connection) {
+        connections.remove(connection);
+    }
+
     public String assignButton(String token) {
         Random rand = new Random();
         String button = availableRoles.get(rand.nextInt(availableRoles.size()));
         availableRoles.remove(button);
         roles.put(token, button);
         return button;
+    }
+
+    public void removeButton(String token) {
+        String role = roles.get(token);
+        if (role != null) {
+            availableRoles.add(role);
+            roles.remove(token);
+        }
     }
 }
