@@ -5,6 +5,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.hackathon.networking.requests.EndConnectionRequest;
 import com.hackathon.networking.requests.RegisterPlayerRequest;
 import com.hackathon.networking.responses.RegisterPlayerResponse;
 
@@ -14,7 +15,8 @@ public class TetrisClient {
     private Client client;
     private static int timeout = 5000;
     private String token;
-    String role;
+    private String role;
+    private int gameId;
 
     TetrisClient() {
         TokenGenerator tokenGenerator = new TokenGenerator();
@@ -26,15 +28,17 @@ public class TetrisClient {
                 RegisterPlayerRequest request = new RegisterPlayerRequest(token);
                 client.sendTCP(request);
             }
-
             public void received (Connection connection, Object object) {
                 if (object instanceof RegisterPlayerResponse) {
                     RegisterPlayerResponse response = (RegisterPlayerResponse)object;
                     role = response.getRole();
+                    gameId = response.getGameId();
                     System.out.println(role);
                 }
             }
             public void disconnected (Connection connection) {
+                EndConnectionRequest request = new EndConnectionRequest(token, role, gameId);
+                client.sendTCP(request);
                 client.close();
             }
         });

@@ -6,6 +6,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.EndPoint;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import com.hackathon.networking.requests.EndConnectionRequest;
 import com.hackathon.networking.requests.RegisterPlayerRequest;
 import com.hackathon.networking.responses.RegisterPlayerResponse;
 
@@ -30,9 +31,9 @@ public class TetrisServer {
         idCounter = 0;
 
         server.addListener(new Listener() {
-            public void received (Connection connection, Object object) {
+            public void received(Connection connection, Object object) {
                 if (object instanceof RegisterPlayerRequest) {
-                    RegisterPlayerRequest request = (RegisterPlayerRequest)object;
+                    RegisterPlayerRequest request = (RegisterPlayerRequest) object;
                     GameInstance instance = getAvailableGame();
 
                     instance.addPlayer(connection, request.getToken());
@@ -43,8 +44,19 @@ public class TetrisServer {
                     System.out.println("Game ID: " + instance.gameId);
                     connection.sendTCP(response);
                 }
+                if (object instanceof EndConnectionRequest) {
+                    EndConnectionRequest request = (EndConnectionRequest) object;
+                    GameInstance instance = findPlayerGame(request.gameId);
+                    instance.removeButton(request.getToken());
+                    instance.removePlayer(connection);
+                }
             }
         });
+    }
+
+    public static void main(String[] argv) throws IOException {
+        TetrisServer server = new TetrisServer();
+        server.listen(3333);
     }
 
     private GameInstance getAvailableGame() {
@@ -59,13 +71,15 @@ public class TetrisServer {
         return games.get(games.size() - 1);
     }
 
+    private GameInstance findPlayerGame(int gameId) {
+        for (GameInstance instance : games)
+            if (instance.gameId == gameId)
+                return instance;
+        return null;
+    }
+
     public void listen(int port) throws IOException {
         server.start();
         server.bind(3333);
-    }
-
-    public static void main(String[] argv) throws IOException {
-        TetrisServer server = new TetrisServer();
-        server.listen(3333);
     }
 }

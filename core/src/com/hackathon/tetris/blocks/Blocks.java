@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 
-public class Blocks extends Polygon{
+public class Blocks extends Polygon {
     private static final int GRAVITY = -15;
     private Vector2 velocity;
     private Vector2 position;
@@ -39,7 +39,7 @@ public class Blocks extends Polygon{
     public void setTexture() {
         switch (type) {
             case Z:
-                blockImage = new Texture("bird.png");
+                blockImage = new Texture("44.png");
                 break;
             case NAIL:
                 blockImage = new Texture("22.png");
@@ -105,5 +105,9 @@ public class Blocks extends Polygon{
 
     public void setRotation(int rotation) {
         this.rotation = rotation;
+    }
+
+    public void dispose() {
+        blockImage.dispose();
     }
 }
